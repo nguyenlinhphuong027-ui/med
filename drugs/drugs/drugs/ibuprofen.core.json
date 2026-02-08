@@ -1,0 +1,21 @@
+{
+  "id": "drug_ibuprofen",
+  "name": "Ibuprofen",
+  "sort": "Thuốc giảm đau – kháng viêm",
+  "classification": "NSAID",
+  "safetyLevel": "caution",
+
+  "suitableFor": "Người lớn, trẻ >12 tuổi",
+  "instructions": "Uống sau ăn, tối đa 3 lần/ngày",
+  "contraindications": "Loét dạ dày, suy thận, suy tim nặng",
+  "warning": "Nguy cơ xuất huyết tiêu hóa khi dùng kéo dài",
+
+  "ageGroups": ["adults", "elderly"],
+
+  "interactionTags": [
+    "anticoagulant",
+    "steroid",
+    "other_nsaid",
+    "alcohol"
+  ]
+}
