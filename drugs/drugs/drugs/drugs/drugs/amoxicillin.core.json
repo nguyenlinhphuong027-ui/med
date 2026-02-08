@@ -1,0 +1,20 @@
+{
+  "id": "drug_amoxicillin",
+  "name": "Amoxicillin",
+  "sort": "Kháng sinh",
+  "classification": "Beta-lactam / Penicillin",
+  "safetyLevel": "prescription",
+
+  "suitableFor": "Người lớn, trẻ em theo chỉ định bác sĩ",
+  "instructions": "Uống đủ liều, đủ thời gian, không tự ý ngưng",
+  "contraindications": "Dị ứng penicillin",
+  "warning": "Lạm dụng gây kháng kháng sinh",
+
+  "ageGroups": ["children", "adults", "elderly"],
+
+  "interactionTags": [
+    "oral_contraceptive",
+    "allopurinol",
+    "other_antibiotic"
+  ]
+}
