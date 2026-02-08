@@ -1,0 +1,73 @@
+{
+  "id": "drug_cold_combo",
+
+  "organImpact": {
+    "liver": {
+      "baseRisk": 25,
+      "toxicityType": "duplicate-dose",
+      "description": "Nguy cơ quá liều Paracetamol tiềm ẩn"
+    },
+    "brain": {
+      "baseRisk": 15,
+      "toxicityType": "sedative",
+      "description": "Kháng histamine gây buồn ngủ, giảm tỉnh táo"
+    },
+    "heart": {
+      "baseRisk": 10,
+      "toxicityType": "sympathomimetic",
+      "description": "Phenylephrine có thể làm tăng huyết áp"
+    }
+  },
+
+  "lifeAxisRules": [
+    {
+      "axis": "substance",
+      "condition": ">40",
+      "organ": "liver",
+      "effect": "amplify",
+      "multiplier": 1.6,
+      "message": "Rượu làm tăng mạnh nguy cơ độc gan"
+    }
+  ],
+
+  "burden": {
+    "liver": {
+      "baseLoad": 25,
+      "stackingRule": {
+        "whenDuplicateActiveIngredient": true,
+        "additionalLoad": 30,
+        "message": "Trùng Paracetamol từ nhiều thuốc gây quá liều"
+      },
+      "timeDynamics": {
+        "decayRate": 0.8,
+        "warningAfterDays": 2,
+        "trendPenalty": 20
+      }
+    }
+  },
+
+  "profileRestrictions": [
+    {
+      "condition": "chronic_liver_disease",
+      "level": "danger",
+      "message": "Không dùng thuốc cảm tổng hợp khi có bệnh gan"
+    },
+    {
+      "condition": "hypertension",
+      "level": "caution",
+      "message": "Phenylephrine có thể làm tăng huyết áp"
+    }
+  ],
+
+  "riskThresholds": {
+    "low": { "max": 29 },
+    "medium": { "min": 30, "max": 59 },
+    "high": { "min": 60 }
+  },
+
+  "alertMapping": {
+    "organImpact": true,
+    "profileAvoidance": true,
+    "drugInteraction": true
+  }
+}
