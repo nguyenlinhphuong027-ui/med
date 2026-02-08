@@ -1,0 +1,71 @@
+{
+  "id": "drug_amoxicillin",
+
+  "organImpact": {
+    "gut": {
+      "baseRisk": 20,
+      "toxicityType": "microbiome-disruption",
+      "description": "Làm mất cân bằng hệ vi sinh đường ruột"
+    },
+    "skin": {
+      "baseRisk": 10,
+      "toxicityType": "allergic",
+      "description": "Có thể gây phát ban, phản ứng dị ứng"
+    }
+  },
+
+  "lifeAxisRules": [
+    {
+      "axis": "nutrition",
+      "condition": "<40",
+      "organ": "gut",
+      "effect": "amplify",
+      "multiplier": 1.4,
+      "message": "Ăn uống kém làm hệ vi sinh phục hồi chậm"
+    },
+    {
+      "axis": "immune",
+      "condition": "<40",
+      "organ": "gut",
+      "effect": "increase",
+      "multiplier": 1.3,
+      "message": "Miễn dịch yếu làm tăng tác dụng phụ đường ruột"
+    }
+  ],
+
+  "burden": {
+    "gut": {
+      "baseLoad": 20,
+      "stackingRule": {
+        "whenMultipleAntibiotics": true,
+        "additionalLoad": 25,
+        "message": "Dùng nhiều kháng sinh làm rối loạn hệ vi sinh nặng"
+      },
+      "timeDynamics": {
+        "decayRate": 0.75,
+        "warningAfterDays": 3,
+        "trendPenalty": 15
+      }
+    }
+  },
+
+  "profileRestrictions": [
+    {
+      "condition": "penicillin_allergy",
+      "level": "danger",
+      "message": "Chống chỉ định tuyệt đối với Amoxicillin"
+    }
+  ],
+
+  "riskThresholds": {
+    "low": { "max": 34 },
+    "medium": { "min": 35, "max": 64 },
+    "high": { "min": 65 }
+  },
+
+  "alertMapping": {
+    "organImpact": true,
+    "profileAvoidance": true,
+    "drugInteraction": true
+  }
+}
