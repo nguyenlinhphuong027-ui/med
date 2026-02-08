@@ -1,0 +1,26 @@
+{
+  "id": "drug_cold_combo",
+  "name": "Thuốc cảm cúm tổng hợp",
+  "sort": "Thuốc không kê đơn",
+  "classification": "Combination drug",
+  "safetyLevel": "high-caution",
+
+  "suitableFor": "Người lớn",
+  "instructions": "Không dùng đồng thời với thuốc chứa cùng hoạt chất",
+  "contraindications": "Bệnh gan, tăng huyết áp, glaucom",
+  "warning": "Dễ quá liều do trùng hoạt chất",
+
+  "ageGroups": ["adults"],
+
+  "contains": [
+    "paracetamol",
+    "chlorpheniramine",
+    "phenylephrine"
+  ],
+
+  "interactionTags": [
+    "other_acetaminophen",
+    "alcohol",
+    "antihistamine"
+  ]
+}
