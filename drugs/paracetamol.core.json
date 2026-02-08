@@ -1,0 +1,20 @@
+{
+  "id": "drug_paracetamol",
+  "name": "Paracetamol",
+  "sort": "Thuốc giảm đau – hạ sốt",
+  "classification": "Analgesic / Antipyretic",
+  "safetyLevel": "caution",
+
+  "suitableFor": "Người lớn, trẻ em theo liều khuyến cáo",
+  "instructions": "Uống sau ăn, người lớn không quá 4g/ngày",
+  "contraindications": "Bệnh gan nặng, nghiện rượu mạn tính",
+  "warning": "Quá liều có thể gây hoại tử gan",
+
+  "ageGroups": ["children", "adults", "elderly"],
+
+  "interactionTags": [
+    "alcohol",
+    "other_acetaminophen",
+    "enzyme_inducer"
+  ]
+}
