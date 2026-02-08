@@ -1,0 +1,107 @@
+{
+  "drugId": "drug_ibuprofen",
+
+  "organImpact": {
+    "stomach": {
+      "baseRisk": 25,
+      "toxicityType": "dose-and-duration-dependent",
+      "description": "Ức chế COX-1 làm giảm bảo vệ niêm mạc dạ dày"
+    },
+    "kidney": {
+      "baseRisk": 20,
+      "toxicityType": "hemodynamic",
+      "description": "Giảm tưới máu thận, đặc biệt khi mất nước"
+    },
+    "heart": {
+      "baseRisk": 10,
+      "toxicityType": "long-term-risk",
+      "description": "Tăng nguy cơ tim mạch khi dùng kéo dài"
+    }
+  },
+
+  "lifeAxisRules": [
+    {
+      "axis": "hydration",
+      "condition": "<40",
+      "organ": "kidney",
+      "effect": "amplify",
+      "multiplier": 1.6,
+      "message": "Thiếu nước làm tăng nguy cơ suy thận khi dùng Ibuprofen"
+    },
+    {
+      "axis": "nutrition",
+      "condition": "<40",
+      "organ": "stomach",
+      "effect": "increase",
+      "multiplier": 1.3,
+      "message": "Ăn uống kém làm tăng kích ứng dạ dày"
+    },
+    {
+      "axis": "substance",
+      "condition": ">60",
+      "organ": "stomach",
+      "effect": "amplify",
+      "multiplier": 1.4,
+      "message": "Rượu làm tăng nguy cơ xuất huyết tiêu hóa"
+    }
+  ],
+
+  "burden": {
+    "stomach": {
+      "baseLoad": 25,
+      "stackingRule": {
+        "whenMultipleNSAIDs": true,
+        "additionalLoad": 20,
+        "message": "Dùng nhiều NSAID cùng lúc làm tăng mạnh nguy cơ loét dạ dày"
+      },
+      "timeDynamics": {
+        "decayRate": 0.8,
+        "warningAfterDays": 3,
+        "trendPenalty": 15
+      }
+    },
+    "kidney": {
+      "baseLoad": 20,
+      "stackingRule": {
+        "whenMultipleRenalRiskDrugs": true,
+        "additionalLoad": 20,
+        "message": "Nhiều thuốc ảnh hưởng thận gây quá tải chức năng thận"
+      },
+      "timeDynamics": {
+        "decayRate": 0.9,
+        "warningAfterDays": 2,
+        "trendPenalty": 15
+      }
+    }
+  },
+
+  "profileRestrictions": [
+    {
+      "condition": "peptic_ulcer",
+      "level": "danger",
+      "message": "Ibuprofen không phù hợp với người có tiền sử loét dạ dày"
+    },
+    {
+      "condition": "chronic_kidney_disease",
+      "level": "danger",
+      "message": "Ibuprofen có thể làm nặng thêm suy thận"
+    },
+    {
+      "condition": "cardiovascular_disease",
+      "level": "caution",
+      "message": "Cần thận trọng khi dùng Ibuprofen kéo dài"
+    }
+  ],
+
+  "riskThresholds": {
+    "low": { "max": 34 },
+    "medium": { "min": 35, "max": 64 },
+    "high": { "min": 65 }
+  },
+
+  "alertMapping": {
+    "organImpact": true,
+    "profileAvoidance": true,
+    "drugInteraction": true
+  }
+}
