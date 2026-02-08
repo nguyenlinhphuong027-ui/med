@@ -1,5 +1,5 @@
 {
-  "drugId": "drug_paracetamol",
+  "id": "drug_paracetamol",
 
   "organImpact": {
     "liver": {
