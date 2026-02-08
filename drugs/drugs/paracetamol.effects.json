@@ -1,0 +1,73 @@
+{
+  "drugId": "drug_paracetamol",
+
+  "organImpact": {
+    "liver": {
+      "baseRisk": 20,
+      "toxicityType": "dose-dependent",
+      "description": "Paracetamol chuyển hóa chủ yếu qua gan"
+    }
+  },
+
+  "lifeAxisRules": [
+    {
+      "axis": "substance",
+      "condition": ">60",
+      "organ": "liver",
+      "effect": "amplify",
+      "multiplier": 1.8,
+      "message": "Rượu làm tăng nguy cơ độc gan khi dùng Paracetamol"
+    },
+    {
+      "axis": "sleep",
+      "condition": "<40",
+      "organ": "liver",
+      "effect": "increase",
+      "multiplier": 1.2,
+      "message": "Thiếu ngủ kéo dài làm giảm khả năng hồi phục gan"
+    }
+  ],
+
+  "burden": {
+    "liver": {
+      "baseLoad": 20,
+
+      "stackingRule": {
+        "whenMultipleLiverDrugs": true,
+        "additionalLoad": 15,
+        "message": "Dùng nhiều thuốc chuyển hóa qua gan làm tăng gánh nặng gan"
+      },
+
+      "timeDynamics": {
+        "decayRate": 0.85,
+        "warningAfterDays": 3,
+        "trendPenalty": 10
+      }
+    }
+  },
+
+  "profileRestrictions": [
+    {
+      "condition": "chronic_liver_disease",
+      "level": "danger",
+      "message": "Paracetamol không phù hợp với người có bệnh gan mạn tính"
+    },
+    {
+      "condition": "alcohol_dependence",
+      "level": "danger",
+      "message": "Nguy cơ độc gan rất cao khi dùng Paracetamol"
+    }
+  ],
+
+  "riskThresholds": {
+    "low": { "max": 39 },
+    "medium": { "min": 40, "max": 69 },
+    "high": { "min": 70 }
+  },
+
+  "alertMapping": {
+    "organImpact": true,
+    "profileAvoidance": true,
+    "drugInteraction": true
+  }
+}
